@@ -1,14 +1,14 @@
 ### Create project
 Once we have our Ansible environment ready, next create a project. I will create a new project to demonstrate ansible roles example:
 
-# Step 1: Create ansible role - magiosxi-hostclone
+# Step 1: Create ansible role - nagiosxi-hostclone
 To create ansible role, use ansible-galaxy init <role_name> to create the role directory structure.
 We will create the role inside our <project>/roles directory i.e. ~/base/roles/agiosxi-hostclone
 
 [root@ansbile ~]$ mkdir roles
 [root@ansible ~]$ cd roles
 
-### Next use ansible-galaxy init command to create ansible role. We will create agiosxi-hostclone role:
+### Next use ansible-galaxy init command to create ansible role. We will create nagiosxi-hostclone role:
 
 [root@ansible roles]$ ansible-galaxy init nagiosxi-hostclone
 - nagiosxi-hostclone was created successfully
