@@ -13,7 +13,7 @@ We will create the role inside our <project>/roles directory i.e. ~/base/roles/m
 
 [root@ansible roles]$ ansible-galaxy init motd
 - motd was created successfully
-
+```
 [root@ansible roles]$ tree motd
 motd
 ├── defaults
@@ -32,7 +32,7 @@ motd
 │   └── test.yml
 └── vars
     └── main.yml
-
+```
 8 directories, 8 files
 
 # Step 2: Create ansible tasks
@@ -150,10 +150,9 @@ Now after you create ansible role structure, we need a playbook file which will 
   roles:
     - role: nagiosxi-monitoringswagathsmac:nagiosxi-hostclone
 
+==========================================================================================================================================================
 
 # nagios-monitor Role
-
-## Abstract
 
 ### Valid targets
 
