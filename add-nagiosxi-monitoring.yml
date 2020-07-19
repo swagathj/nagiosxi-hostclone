@@ -1,0 +1,8 @@
+---
+- name: Nagiosxi host using motd
+  hosts: all
+  user: root
+  become: true
+
+  roles:
+    - role: nagiosxi-monitoring

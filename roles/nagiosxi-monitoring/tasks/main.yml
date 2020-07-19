@@ -1,0 +1,8 @@
+---
+# tasks file for motd
+- name: Create Nagiosxi file 
+  template:
+    src: "{{ templet }}"
+    dest: "/usr/local/nagios/etc/import/{{ fqdn }}.cfg"
+  notify: import nagios config
+  notify: Restart the nagios config

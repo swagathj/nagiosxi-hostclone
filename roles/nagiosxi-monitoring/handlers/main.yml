@@ -1,0 +1,6 @@
+---
+- name: import nagios config
+  command: "php /usr/local/nagiosxi/scripts/ccm_import.php"
+
+- name: Restart the nagios config
+  shell: /usr/local/nagiosxi/scripts/reconfigure_nagios.sh

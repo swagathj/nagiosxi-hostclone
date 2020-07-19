@@ -1,0 +1,4 @@
+---
+fqdn: "{{ fqdn }}"
+fqdn_address: "{{ fqdn_address }}"
+nfs_janum: "{{ nfs_janum }}"

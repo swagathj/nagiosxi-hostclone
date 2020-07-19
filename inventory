@@ -1,0 +1,3 @@
+[Nagiosxi-Server]
+nagiosxi.jonnalas.com ansible_user=root
+
