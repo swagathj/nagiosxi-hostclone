@@ -1,20 +1,19 @@
 ### Create project
 Once we have our Ansible environment ready, next create a project. I will create a new project to demonstrate ansible roles example:
 
-### Example 1: Ansible roles example to update /etc/motd
-# Step 1: Create ansible role - motd
+# Step 1: Create ansible role - magiosxi-hostclone
 To create ansible role, use ansible-galaxy init <role_name> to create the role directory structure.
-We will create the role inside our <project>/roles directory i.e. ~/base/roles/motd
+We will create the role inside our <project>/roles directory i.e. ~/base/roles/agiosxi-hostclone
 
 [root@ansbile ~]$ mkdir roles
 [root@ansible ~]$ cd roles
 
-### Next use ansible-galaxy init command to create ansible role. We will create motd role:
+### Next use ansible-galaxy init command to create ansible role. We will create agiosxi-hostclone role:
 
 [root@ansible roles]$ ansible-galaxy init nagiosxi-hostclone
 - nagiosxi-hostclone was created successfully
 ```
-[root@ansible roles]$ tree motd
+[root@ansible roles]$ tree agiosxi-hostclone
 nagiosxi-hostclone
 ├── defaults
 │   └── main.yml
@@ -37,9 +36,9 @@ nagiosxi-hostclone
 
 # Step 2: Create ansible tasks
 ```
-[root@ansible motd]$ cat tasks/main.yml 
+[root@ansible agiosxi-hostclone]$ cat tasks/main.yml 
 ---
-# tasks file for motd
+# tasks file for agiosxi-hostclone
 - name: Create Nagiosxi file 
   template:
     src: "{{ templet }}"
@@ -103,7 +102,7 @@ fqdn_address: "{{ fqdn_address }}"
 nfs_janum: "{{ nfs_janum }}"
 
 # Step 5 : Remove unwanted directories (Optional)
-This step is completely optional. In this ansible roles example we will not use other directories so we are deleting them. After deleting the additional directories you can use tree command to list the directory structure of motd roles
+This step is completely optional. In this ansible roles example we will not use other directories so we are deleting them. After deleting the additional directories you can use tree command to list the directory structure of agiosxi-hostclone roles
 
 copy
 [root@ansible nagiosxi-hostclone]$ rm -rf tests vars
@@ -142,7 +141,7 @@ Now after you create ansible role structure, we need a playbook file which will 
 ```
 [root@ansible nagiosxi-hostclone]$ cat add-nagiosxi-monitoring.yml 
 ---
-- name: Nagiosxi host using motd
+- name: Nagiosxi host using agiosxi-hostclone
   hosts: all
   user: root
   become: true
