@@ -99,7 +99,6 @@ We will use defaults folder to define custom variables which is used in our temp
 ---
 fqdn: "{{ fqdn }}"
 fqdn_address: "{{ fqdn_address }}"
-nfs_janum: "{{ nfs_janum }}"
 
 # Step 5 : Remove unwanted directories (Optional)
 This step is completely optional. In this ansible roles example we will not use other directories so we are deleting them. After deleting the additional directories you can use tree command to list the directory structure of agiosxi-hostclone roles

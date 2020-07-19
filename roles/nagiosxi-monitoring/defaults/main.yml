@@ -1,4 +1,4 @@
 ---
+## To define custome variables which is used in our templet files templets/<templet>.j2
 fqdn: "{{ fqdn }}"
 fqdn_address: "{{ fqdn_address }}"
-nfs_janum: "{{ nfs_janum }}"
