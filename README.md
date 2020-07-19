@@ -4,10 +4,10 @@ Once we have our Ansible environment ready, next create a project. I will create
 # Step 1: Create ansible role - nagiosxi-hostclone
 To create ansible role, use ansible-galaxy init <role_name> to create the role directory structure.
 We will create the role inside our <project>/roles directory i.e. ~/base/roles/agiosxi-hostclone
-
+```
 [root@ansbile ~]$ mkdir roles
 [root@ansible ~]$ cd roles
-
+```
 ### Next use ansible-galaxy init command to create ansible role. We will create nagiosxi-hostclone role:
 
 [root@ansible roles]$ ansible-galaxy init nagiosxi-hostclone
@@ -167,29 +167,6 @@ Now after you create ansible role structure, we need a playbook file which will 
 ### Expects
 
 * Expects fact gathering
-
-### Inputs
-```
-| Variable                  | Required | Fuction                                                 | Default                                        |
-|:--------------------------|:---------|:--------------------------------------------------------|:-----------------------------------------------|
-| nagios_hostgroups         | no       | list add host to these hostgroups                       | None (list)                                    |
-| nagios_contacts           | no       | list alert these of XI users                            | None (list)                                    |
-| nagios_contact_groups     | no       | list alert these contact_groups                         | None (list)                                    |
-| nagios_server             | no       | Nagios server to configure                              | nagiosxi.jonnalas.com                        |
-
-```
-* Either one of `nagios_contacts` or `nagios_contact_groups` must be defined.
-* nagios_hostgroups, nagios_contacts, and nagios_contact_groups must exist in as objects in the NagiosXI database. This playbook will not create new contacts, hostgroups, etc.
-* MySQL monitoring suite includes:
-  * 'mysqld' Process
-  * Long Running Processes
-  * Open Connections
-  * Slow Queries
-  * Status
-  * Uptime
-* Setting the nagios_monitor_disks, nagios_monitor_processes and nagios_custom_services variables will replace **NOT** append to the defaults. See the examples below for details.
-
-### Example Invocations
 
 #### Configure standard set of Nagios checks for a new general-purpose VM
 
