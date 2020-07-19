@@ -148,7 +148,7 @@ Now after you create ansible role structure, we need a playbook file which will 
   become: true
 
   roles:
-    - role: nagiosxi-monitoringswagathsmac:nagiosxi-hostclone
+    - role: nagiosxi-monitoring
 ```
 ==========================================================================================================================================================
 
@@ -176,19 +176,8 @@ Now after you create ansible role structure, we need a playbook file which will 
 | nagios_hostgroups         | no       | list add host to these hostgroups                       | None (list)                                    |
 | nagios_contacts           | no       | list alert these of XI users                            | None (list)                                    |
 | nagios_contact_groups     | no       | list alert these contact_groups                         | None (list)                                    |
-| nagios_server             | no       | Nagios server to configure                              | nagiosxi.mathworks.com                         |
-| nagios_db_enable          | no       | bool enable host & services after import                | false                                          |
-| nagios_monitor_disks      | no       | list disks to monitor                                   | ['/', '/opt', '/tmp']                          |
-| nagios_monitor_processes  | no       | list process names to monitor                           | ['cron', 'sshd', 'ypbind']                     |
-| nagios_custom_services    | no       | dict see [defaults file for details](defaults/main.yml) | [defaults file for details](defaults/main.yml) |
-| monitor_memory            | no       | enable Nagios memory check                              | true                                           |
-| monitor_resolution        | no       | enable Nagios DNS name resolution monitoring            | true                                           |
-| monitor_ping              | no       | enable Nagios ping check                                | true                                           |
-| monitor_swap              | no       | enable Nagios swap check                                | true                                           |
-| monitor_cpu               | no       | enable Nagios CPU check                                 | true                                           |
-| monitor_mysql             | no       | enable Nagios MySQL monitoring suite                    | false                                          |
-| mysql_monitoring_user     | no       | user to monitor MySQL database                          | nagios                                         |
-| mysql_monitoring_password | no       | password for monitoring MySQL databases                 | *vaulted*                                      |
+| nagios_server             | no       | Nagios server to configure                              | nagiosxi.jonnalas.com                        |
+
 ```
 * Either one of `nagios_contacts` or `nagios_contact_groups` must be defined.
 * nagios_hostgroups, nagios_contacts, and nagios_contact_groups must exist in as objects in the NagiosXI database. This playbook will not create new contacts, hostgroups, etc.
