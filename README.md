@@ -3,17 +3,17 @@ Once we have our Ansible environment ready, next create a project. I will create
 
 # Step 1: Create ansible role - nagiosxi-hostclone
 To create ansible role, use ansible-galaxy init <role_name> to create the role directory structure.
-We will create the role inside our <project>/roles directory i.e. ~/base/roles/agiosxi-hostclone
+We will create the role inside our <project>/roles directory i.e. ~/nagiosxi-hostclone/roles
 ```
-[root@ansbile ~]$ mkdir roles
+[root@ansbile nagiosxi-hostclone~]$ mkdir roles
 [root@ansible ~]$ cd roles
 ```
 ### Next use ansible-galaxy init command to create ansible role. We will create nagiosxi-hostclone role:
 
-[root@ansible roles]$ ansible-galaxy init nagiosxi-hostclone
-- nagiosxi-hostclone was created successfully
+[root@ansible roles]$ ansible-galaxy init roles
+- roles was created successfully
 ```
-[root@ansible roles]$ tree agiosxi-hostclone
+[root@ansible roles]$ tree roles
 nagiosxi-hostclone
 ├── defaults
 │   └── main.yml
@@ -36,7 +36,7 @@ nagiosxi-hostclone
 
 # Step 2: Create ansible tasks
 ```
-[root@ansible agiosxi-hostclone]$ cat tasks/main.yml 
+[root@ansible roles]$ cat tasks/main.yml 
 ---
 # tasks file for agiosxi-hostclone
 - name: Create Nagiosxi file 
@@ -105,8 +105,8 @@ nfs_janum: "{{ nfs_janum }}"
 This step is completely optional. In this ansible roles example we will not use other directories so we are deleting them. After deleting the additional directories you can use tree command to list the directory structure of agiosxi-hostclone roles
 
 copy
-[root@ansible nagiosxi-hostclone]$ rm -rf tests vars
-[root@ansible nagiosxi-hostclone]$ tree
+[root@ansible roles]$ rm -rf tests vars
+[root@ansible roles]$ tree
 .
 ├── README.md
 ├── add-nagiosxi-monitoring.yml
