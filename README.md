@@ -11,11 +11,11 @@ We will create the role inside our <project>/roles directory i.e. ~/base/roles/m
 
 ### Next use ansible-galaxy init command to create ansible role. We will create motd role:
 
-[root@ansible roles]$ ansible-galaxy init motd
-- motd was created successfully
+[root@ansible roles]$ ansible-galaxy init nagiosxi-hostclone
+- nagiosxi-hostclone was created successfully
 ```
 [root@ansible roles]$ tree motd
-motd
+nagiosxi-hostclone
 ├── defaults
 │   └── main.yml
 ├── files
@@ -36,7 +36,7 @@ motd
 8 directories, 8 files
 
 # Step 2: Create ansible tasks
-
+```
 [root@ansible motd]$ cat tasks/main.yml 
 ---
 # tasks file for motd
@@ -46,11 +46,11 @@ motd
     dest: "/usr/local/nagios/etc/import/{{ fqdn }}.cfg"
   notify: import nagios config
   notify: Restart the nagios config
-
+```
 # Step 3: Create ansible template
 
 Next we will create the template content which will be used to update host clonning in our ansible roles examples. I will create a new template file under templates directory using some variables:
-
+```
 [root@ansible roles]$ cat templates/nagios-hosts.cfg.j2 
 ###############################################################################
 #
@@ -91,11 +91,11 @@ define host {
 # END OF FILE
 #
 ###############################################################################
-
+```
 # Step 4: Create ansible variables
 
 We will use defaults folder to define custom variables which is used in our template file templates/<templete.cfg.j2>
-
+```
 [root@ansible roles]$ cat defaults/main.yml 
 ---
 fqdn: "{{ fqdn }}"
@@ -135,11 +135,11 @@ copy
 
 10 directories, 13 files
 
-
+```
 # Step 6: Create ansible role playbook
 
 Now after you create ansible role structure, we need a playbook file which will deploy the role to our managed hosts. I will create my playbook file add-nagiosxi-monitoring.yml under nagiosxi-hostclone project directory.
-
+```
 [root@ansible nagiosxi-hostclone]$ cat add-nagiosxi-monitoring.yml 
 ---
 - name: Nagiosxi host using motd
@@ -149,7 +149,7 @@ Now after you create ansible role structure, we need a playbook file which will 
 
   roles:
     - role: nagiosxi-monitoringswagathsmac:nagiosxi-hostclone
-
+```
 ==========================================================================================================================================================
 
 # nagios-monitor Role
@@ -170,7 +170,7 @@ Now after you create ansible role structure, we need a playbook file which will 
 * Expects fact gathering
 
 ### Inputs
-
+```
 | Variable                  | Required | Fuction                                                 | Default                                        |
 |:--------------------------|:---------|:--------------------------------------------------------|:-----------------------------------------------|
 | nagios_hostgroups         | no       | list add host to these hostgroups                       | None (list)                                    |
@@ -189,7 +189,7 @@ Now after you create ansible role structure, we need a playbook file which will 
 | monitor_mysql             | no       | enable Nagios MySQL monitoring suite                    | false                                          |
 | mysql_monitoring_user     | no       | user to monitor MySQL database                          | nagios                                         |
 | mysql_monitoring_password | no       | password for monitoring MySQL databases                 | *vaulted*                                      |
-
+```
 * Either one of `nagios_contacts` or `nagios_contact_groups` must be defined.
 * nagios_hostgroups, nagios_contacts, and nagios_contact_groups must exist in as objects in the NagiosXI database. This playbook will not create new contacts, hostgroups, etc.
 * MySQL monitoring suite includes:
@@ -218,11 +218,15 @@ Now after you create ansible role structure, we need a playbook file which will 
 #### Running the play book:
 
 #### Command:
-
+```
 ansible-playbook -e "fqdn=<FQDN Host Name> fqdn_address=<IP Address for host> templet=<Templet to clone the host and services>" add-nagiosxi-monitoring.yml
-
+```
 ### Example to clone host:
+```
 ansible-playbook -e "fqdn=batfs-21-hyd.jonnalas.com fqdn_address=192.168.0.103 templet=nagiosxi-hosts.cfg.j2" add-nagiosxi-monitoring.yml
-
+```
 ### Examnple to clone the services:
+```
 ansible-playbook -e "fqdn=batfs-21-hyd.jonnalas.com fqdn_address=192.168.0.103 templet=nagiosxi-service.cfg.j2" add-nagiosxi-monitoring.yml
+
+```
